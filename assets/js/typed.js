@@ -1,0 +1,1 @@
+new Typed('#typed',{strings:[,'hellhound.sh runs you',"fei is unlegit",'jayden is closeted', 'highkey loves femboys','eve owes fei a cleaner','rtx is a bad thief','hoz is the worst dx9ware staff','who the fuck is arch?',],typeSpeed:35,delaySpeed:90,showCursor:true,loop:true})
