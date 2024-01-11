@@ -1,17 +1,18 @@
 new Typed('#typed', {
   strings: [,
     'hellhound.sh owns you',
-    'miraflaff is cute',
-    'fei is unlegit',
+    '<span style="color: blue;">miraflaff</span> loves arch', 
+    '<span style="color: red;">arch</span> loves miraflaff',
     'jayden is secretly closeted',
     'highkey loves femboys',
-    'eve codes in english',
-    'rtx is #1 eu troll (takes me for fool)',
+    'eve loves adele',
+    '<span style="color: red;">rtx</span> is #1 troll (BIBM MAN)',
     'hoz is the worst dx9ware staff',
-    '<span style="color: red;">arch</span> will find you'
+    'fei is unlegit'
   ],
   typeSpeed: 35,
   delaySpeed: 90,
   showCursor: true,
   loop: true
 });
+	
