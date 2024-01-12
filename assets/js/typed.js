@@ -6,7 +6,7 @@ new Typed('#typed', {
     'jayden is secretly closeted',
     'highkey loves femboys',
     'eve loves adele',
-    '<span style="color: red;">rtx</span> is #1 troll (BIBM MAN)',
+    '<span style="color: red;">rtx</span> is in the nvidia database',
     'hoz is the worst dx9ware staff',
     'fei is unlegit'
   ],
