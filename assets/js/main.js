@@ -1,8 +1,6 @@
 var titleText = [
         'hellhound.sh',
         'fei#0001',
-        'SUNAKO AWARENESS',
-         't.me/archlinuxfanboy',
       ];
       
       function loop() {
