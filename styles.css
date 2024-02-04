@@ -36,6 +36,15 @@ a {
     bottom: 0;
     right: 0;
     user-select: none;
+    z-index: -1; 
+}
+
+
+@media (max-width: 768px) {
+    .mobile-girl {
+        width: 150px;
+        height: 275px;
+    }
 }
 
 .title {
