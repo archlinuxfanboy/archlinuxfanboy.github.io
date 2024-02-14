@@ -24,12 +24,12 @@ function showQuestionScreen() {
 
 let catImageIndexYes = 0;
 let catImageIndexNo = 0;
-const catImagesYes = ['cat1.jpg']; // Cat image for 'Yes'
-const catImagesNo = ['cat2.jpg'];  // Cat image for 'No'
+const catImagesYes = ['cat1.jpg'];
+const catImagesNo = ['cat2.jpg'];
 
 function answer(response) {
     const questionElement = document.getElementById('question');
-    questionElement.classList.remove('glow-text'); // Remove glow effect after 'Yes' or 'No'
+    questionElement.classList.remove('glow-text');
 
     if (response === 'yes') {
         playAudio('audio1.mp3');
@@ -64,23 +64,22 @@ function showCatImage(catImageSource) {
     catImage.alt = 'Cat';
     catImage.classList.add('fade-in', 'small-cat');
 
-    catImageContainer.innerHTML = ''; // Remove previous cat image if present
+    catImageContainer.innerHTML = '';
     catImageContainer.appendChild(catImage);
 
-    // Trigger the fade-in effect
     setTimeout(() => {
         catImage.classList.add('show');
     }, 0);
 }
 
 function createRain() {
-    const numDrops = 100; // Number of raindrops
+    const numDrops = 100;
 
     for (let i = 0; i < numDrops; i++) {
         const drop = document.createElement('div');
         drop.classList.add('drop');
-        drop.style.left = `${Math.random() * 100}%`; // Random horizontal position
-        drop.style.animationDuration = `${Math.random() * 2 + 1}s`; // Random falling speed
+        drop.style.left = `${Math.random() * 100}%`;
+        drop.style.animationDuration = `${Math.random() * 2 + 1}s`;
         document.body.appendChild(drop);
     }
 }

@@ -4,15 +4,15 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #ffcccb; /* Initial pink background color */
+    background-color: #ffcccb;
     font-family: 'Roboto', sans-serif;
-    transition: background-color 1s ease; /* Add transition for smoother color change */
-    overflow: hidden; /* Prevent scrolling while rain is active */
-    position: relative; /* Make sure the rain is positioned relative to the body */
+    transition: background-color 1s ease;
+    overflow: hidden;
+    position: relative;
 }
 
 .sad-background {
-    background-color: #808080 !important; /* Ensure the sad background color takes precedence */
+    background-color: #808080 !important;
 }
 
 .container {
@@ -28,7 +28,7 @@ body {
 
 #question {
     color: #ff0066;
-    font-size: 28px;
+    font-size: 32px; /* Increased font size */
     text-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
 }
 
@@ -68,7 +68,7 @@ body {
 .small-cat {
     max-width: 100%;
     height: auto;
-    border-radius: 10px; /* Rounded edges for images */
+    border-radius: 10px;
 }
 
 .glow {
@@ -87,13 +87,12 @@ body {
     }
 }
 
-/* Rain effect */
 .rain {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Make the rain cover the entire screen */
+    height: 100vh;
     pointer-events: none;
     background: linear-gradient(rgba(173, 216, 230, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(173, 216, 230, 0.1) 1px, transparent 1px);
@@ -115,9 +114,9 @@ body {
     position: absolute;
     width: 1px;
     height: 15px;
-    background-color: #add8e6; /* Blue color for raindrops */
+    background-color: #add8e6;
     animation: fall linear infinite;
-    top: 0; /* Start the rain from the top */
+    top: 0;
 }
 
 @keyframes fall {
