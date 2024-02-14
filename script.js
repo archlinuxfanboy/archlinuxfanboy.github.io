@@ -52,10 +52,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 return 'this guy is here for trolls';
             case 'hoz':
                 return 'worst dx9ware staff';
+            case 'sar':
+                return 'sar owns you (he larp pakistan)';
             default:
                 return '';
         }
     }
+    
+
 
     function createWindowsXPPopup(text, imageName) {
         
