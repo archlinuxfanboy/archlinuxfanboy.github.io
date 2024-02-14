@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #ffcccb; /* Initial pink background color */
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 1s ease; /* Add transition for smoother color change */
+    overflow: hidden; /* Prevent scrolling while rain is active */
+    position: relative; /* Make sure the rain is positioned relative to the body */
+}
+
+.sad-background {
+    background-color: #808080 !important; /* Ensure the sad background color takes precedence */
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+#question {
+    color: #ff0066;
+    font-size: 28px;
+    text-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #ff0066;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-no {
+    background-color: #ff0066;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+.small-cat {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded edges for images */
+}
+
+.glow {
+    animation: glowing 1.5s infinite;
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 0, 102, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
+    }
+}
+
+/* Rain effect */
+.rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Make the rain cover the entire screen */
+    pointer-events: none;
+    background: linear-gradient(rgba(173, 216, 230, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(173, 216, 230, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: rain-animation 0.5s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes rain-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 20px 20px;
+    }
+}
+
+.drop {
+    position: absolute;
+    width: 1px;
+    height: 15px;
+    background-color: #add8e6; /* Blue color for raindrops */
+    animation: fall linear infinite;
+    top: 0; /* Start the rain from the top */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh);
+    }
+    100% {
+        transform: translateY(110vh);
+    }
+}
