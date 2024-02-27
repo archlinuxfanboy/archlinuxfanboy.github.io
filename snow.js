@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const NUM_SYMBOLS = 30;
     const SYMBOL_SIZE = 20;
-    const FALL_SPEED = 4;
+    const FALL_SPEED = 5;
 
     let symbolsActive = false;
 
     function createSymbol() {
         const symbol = document.createElement('div');
-        symbol.innerHTML = '*';
+        symbol.innerHTML = '+';
         symbol.classList.add('mouse-symbol');
         document.body.appendChild(symbol);
         

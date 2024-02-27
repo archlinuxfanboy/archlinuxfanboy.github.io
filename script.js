@@ -38,6 +38,7 @@ $(document).ready(function() {
         $("#enter-type-in").fadeOut();
         
         var audio = new Audio('assets/audio.mp3');
+        audio.volume = 0.1;
         audio.play();
         $("<img src='assets/cute.gif' style='position: fixed; bottom: 10px; right: 10px; z-index: 1;'>").hide().appendTo("body").fadeIn();
 
@@ -95,6 +96,7 @@ $(document).ready(function() {
             }, 50);
 
             var audio2 = new Audio('assets/audio2.mp3');
+            audio2.volume = 1; 
             audio2.play();
         });
     });
