@@ -117,7 +117,7 @@ body {
 }
 
 .fade-in {
-    animation: fade-in 1s forwards;
+    animation: fade-in 3s forwards;
 }
 
 @keyframes neon-flicker {

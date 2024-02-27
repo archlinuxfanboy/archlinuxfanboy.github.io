@@ -55,6 +55,7 @@ $(document).ready(function() {
             left: 50%;
             transform: translateX(-50%);
             color: white;
+            font-family: monospace;
             font-size: 60px;
             font-weight: bold;
             text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
@@ -90,7 +91,7 @@ $(document).ready(function() {
                 width += 1;
                 if (width >= 100) {
                     clearInterval(interval);
-                    ipText.text("the swat team is coming, hide");
+                    ipText.text("we know everything, swat team is coming. hide");
                     progressBar.fadeOut();
                 }
             }, 50);

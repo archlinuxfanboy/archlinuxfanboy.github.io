@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const NUM_SYMBOLS = 30;
+    const NUM_SYMBOLS = 100;
     const SYMBOL_SIZE = 20;
     const FALL_SPEED = 5;
 
