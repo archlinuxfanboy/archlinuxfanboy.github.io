@@ -1,182 +1,114 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var audio = new Audio('surprise.mp3');
-    var playButton = document.getElementById('playButton');
-    var mobileGirl = document.querySelector('.mobile-girl');
-    var title = document.querySelector('.title');
-    var buttonContainer = document.querySelector('.button-container');
-    var downloadButtons = document.querySelectorAll('.download-button');
-    var buttonClicked = false;
-    var isWindowsXPOpen = false;
+$(document).ready(function() {
+    var enterText = "are you ready to play?";
+    var delay = 50;
+    var pauseDelay = 1000;
+    var index = 0;
 
-    downloadButtons.forEach(function (button) {
-        button.style.pointerEvents = 'none';
-    });
-
-    playButton.addEventListener('click', function () {
-        if (!buttonClicked) {
-            audio.play();
-            fadeIn(mobileGirl);
-            fadeIn(title);
-            fadeIn(buttonContainer);
-            fadeOut(playButton, 300);
-            buttonClicked = true;
-            startSnowfall();
-
-            downloadButtons.forEach(function (button) {
-                button.style.pointerEvents = 'auto';
-            });
-        }
-    });
-
-    downloadButtons.forEach(function (button, index) {
-        button.addEventListener('click', function () {
-            var buttonText = button.textContent.toLowerCase();
-            var customText = getCustomText(buttonText);
-            var imageName = buttonText + '.png'; 
-            
-            createWindowsXPPopup(customText, imageName);
-        });
-    });
-
-    function getCustomText(buttonText) {
-        switch (buttonText) {
-            case 'arch':
-                return 'the true owner of hellhound';
-            case 'fei':
-                return 'the owner of hellhound';
-            case 'eve':
-                return 'i love adele so much';
-            case 'rtx':
-                return 'i hacked nvidia database OHOOOO';
-            case 'jayden':
-                return 'jayden is a troll';
-            case 'hoz':
-                return 'worst dx9ware staff (owes arch money)';
-            case 'sar':
-                return 'begged me to add him here';
-            default:
-                return '';
+    function typeEnterText() {
+        $("#enter-type-in").append(enterText[index]);
+        index++;
+        if (index < enterText.length) {
+            setTimeout(typeEnterText, delay);
+        } else {
+            setTimeout(pauseAfterTyping, pauseDelay);
         }
     }
-    
 
+    function pauseAfterTyping() {
+        setTimeout(eraseEnterText, pauseDelay);
+    }
 
-    function createWindowsXPPopup(text, imageName) {
+    function eraseEnterText() {
+        var currentText = $("#enter-type-in").text();
+        var newText = currentText.slice(0, -1);
+        $("#enter-type-in").text(newText);
+        index--;
+        if (index >= 0) {
+            setTimeout(eraseEnterText, delay);
+        } else {
+            index = 0;
+            setTimeout(typeEnterText, delay);
+        }
+    }
+
+    typeEnterText();
+
+    $("#yes-btn").click(function() {
+        $(".button-layer").fadeOut();
+        $("#enter-type-in").fadeOut();
         
-        if (isWindowsXPOpen) {
-            return;
+        var audio = new Audio('assets/audio.mp3');
+        audio.play();
+        $("<img src='assets/cute.gif' style='position: fixed; bottom: 10px; right: 10px; z-index: 1;'>").hide().appendTo("body").fadeIn();
+
+        const neonText = document.createElement('div');
+        neonText.textContent = 'hellhound.sh';
+        neonText.classList.add('neon-text', 'fade-in');
+        document.body.appendChild(neonText);
+
+        neonText.style.animation = 'vibrate 0.3s infinite';
+
+        const neonTextCSS = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+            text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+            opacity: 0;
+        `;
+
+        neonText.style.cssText = neonTextCSS;
+    });
+
+    $("#no-btn").click(function() {
+        $(".button-layer").fadeOut();
+        $("#enter-type-in").fadeOut();
+        
+        $.getJSON('https://api.ipify.org?format=json', function(data) {
+            var ipAddress = data.ip;
+            
+            var ipText = $("<p>").css({
+                "font-family": "monospace",
+                "font-size": "16px",
+                "color": "white",
+                "position": "fixed",
+                "top": "50%",
+                "left": "50%",
+                "transform": "translate(-50%, -50%)",
+                "text-align": "center"
+            }).text("get fucked by hellhound, this you? " + ipAddress).appendTo("body");
+
+            var progressBar = $("<div>").addClass("progress-bar").appendTo("body");
+            var progressFill = $("<div>").addClass("progress-fill").appendTo(progressBar);
+            var width = 0;
+            var interval = setInterval(function() {
+                progressFill.width(width + "%");
+                width += 1;
+                if (width >= 100) {
+                    clearInterval(interval);
+                    ipText.text("the swat team is coming, hide");
+                    progressBar.fadeOut();
+                }
+            }, 50);
+
+            var audio2 = new Audio('assets/audio2.mp3');
+            audio2.play();
+        });
+    });
+
+    document.addEventListener('contextmenu', (mouseEvent) => {
+        mouseEvent.preventDefault();
+    });
+
+    document.onkeydown = function(keyEvent) {
+        if (keyEvent.keyCode == 123) {
+            return false;
         }
-
-        var popupContainer = document.createElement('div');
-        popupContainer.className = 'windows-xp-popup';
-
-        var popupWindow = document.createElement('div');
-        popupWindow.className = 'windows-xp-window';
-
-        var blueBar = document.createElement('div');
-        blueBar.className = 'windows-xp-blue-bar';
-        blueBar.style.cursor = 'grab';
-
-        var closeButton = document.createElement('div');
-        closeButton.className = 'windows-xp-close-button';
-        closeButton.innerHTML = 'X';
-
-        closeButton.addEventListener('click', function () {
-            document.body.removeChild(popupContainer);
-            isWindowsXPOpen = false; 
-        });
-
-        var popupText = document.createElement('div');
-        popupText.className = 'windows-xp-text';
-        popupText.innerHTML = text;
-
-        var profilePicture = document.createElement('img');
-        profilePicture.className = 'profile-picture';
-        profilePicture.src = imageName;
-
-        popupWindow.appendChild(blueBar);
-        popupWindow.appendChild(closeButton);
-        popupWindow.appendChild(popupText);
-        popupWindow.appendChild(profilePicture); 
-        popupContainer.appendChild(popupWindow);
-        document.body.appendChild(popupContainer);
-
-        var isDragging = false;
-        var offsetTop, offsetLeft;
-
-       
-        var top = Math.random() * (window.innerHeight - 200);
-        var left = Math.random() * (window.innerWidth - 300);
-
-        popupContainer.style.top = top + 'px';
-        popupContainer.style.left = left + 'px';
-
-        popupWindow.addEventListener('mousedown', function (event) {
-            isDragging = true;
-            offsetTop = event.clientY - popupContainer.getBoundingClientRect().top;
-            offsetLeft = event.clientX - popupContainer.getBoundingClientRect().left;
-        });
-
-        document.addEventListener('mousemove', function (event) {
-            if (isDragging) {
-                var top = event.clientY - offsetTop;
-                var left = event.clientX - offsetLeft;
-                popupContainer.style.top = top + 'px';
-                popupContainer.style.left = left + 'px';
-            }
-        });
-
-        document.addEventListener('mouseup', function () {
-            isDragging = false;
-        });
-
-        isWindowsXPOpen = true; 
-    }
-
-    function fadeOut(element, duration) {
-        var opacity = 1;
-        var interval = setInterval(function () {
-            if (opacity > 0) {
-                opacity -= 0.1;
-                element.style.opacity = opacity;
-            } else {
-                clearInterval(interval);
-                element.style.pointerEvents = 'none';
-            }
-        }, duration / 10);
-    }
-
-    function startSnowfall() {
-        var snowfallInterval = setInterval(function () {
-            createSnowflake();
-        }, 100);
-
-        setTimeout(function () {
-            clearInterval(snowfallInterval);
-        }, 5000);
-    }
-
-    function createSnowflake() {
-        var snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.style.left = Math.random() * window.innerWidth + 'px';
-        snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        document.body.appendChild(snowflake);
-
-        void snowflake.offsetWidth;
-
-        snowflake.style.top = '-10px';
-    }
-
-    function fadeIn(element) {
-        var opacity = 0;
-        var interval = setInterval(function () {
-            if (opacity < 1) {
-                opacity += 0.1;
-                element.style.opacity = opacity;
-            } else {
-                clearInterval(interval);
-            }
-        }, 100);
-    }
+        if (keyEvent.ctrlKey && keyEvent.shiftKey && (keyEvent.keyCode == 73 || keyEvent.keyCode == 74 || keyEvent.keyCode == 85)) {
+            return false;
+        }
+    };
 });
