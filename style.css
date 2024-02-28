@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
+    overflow: hidden;
 }
 
 .container {
@@ -92,7 +93,7 @@ body {
     height: 100px;
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 35px; 
+    font-size: 50px; 
     opacity: 0;
     animation: fadeIn 1s ease forwards,
                fadeOut 1s ease forwards 2s;

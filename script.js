@@ -3,6 +3,8 @@ $(document).ready(function() {
     var delay = 50;
     var pauseDelay = 1000;
     var index = 0;
+    var isYesButtonProcessing = false;
+    var isNoButtonProcessing = false;
 
     function typeEnterText() {
         $("#enter-type-in").append(enterText[index]);
@@ -34,9 +36,14 @@ $(document).ready(function() {
     typeEnterText();
 
     $("#yes-btn").click(function() {
+        if (isYesButtonProcessing) {
+            return;
+        }
+
+        isYesButtonProcessing = true;
         $(".button-layer").fadeOut();
         $("#enter-type-in").fadeOut();
-        
+
         var audio = new Audio('assets/audio.mp3');
         audio.volume = 0.1;
         audio.play();
@@ -63,15 +70,28 @@ $(document).ready(function() {
         `;
 
         neonText.style.cssText = neonTextCSS;
+
+        setTimeout(function() {
+            isYesButtonProcessing = false;
+        }, 3000);
+
+        setTimeout(function() {
+            isYesButtonProcessing = false;
+        }, 5000);
     });
 
     $("#no-btn").click(function() {
+        if (isNoButtonProcessing) {
+            return;
+        }
+
+        isNoButtonProcessing = true;
         $(".button-layer").fadeOut();
         $("#enter-type-in").fadeOut();
-        
+
         $.getJSON('https://api.ipify.org?format=json', function(data) {
             var ipAddress = data.ip;
-            
+
             var ipText = $("<p>").css({
                 "font-family": "monospace",
                 "font-size": "16px",
@@ -91,15 +111,26 @@ $(document).ready(function() {
                 width += 1;
                 if (width >= 100) {
                     clearInterval(interval);
-                    ipText.text("we know everything, swat team is coming. hide");
+                    ipText.text("You fucked up, SWAT team is coming");
                     progressBar.fadeOut();
+
+                    var runImage = $("<img src='assets/run.png' style='position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1;'>")
+                        .hide().appendTo("body").fadeIn();
                 }
             }, 50);
 
             var audio2 = new Audio('assets/audio2.mp3');
-            audio2.volume = 1; 
+            audio2.volume = 1;
             audio2.play();
+
+            setTimeout(function() {
+                isNoButtonProcessing = false;
+            }, 5000);
         });
+
+        setTimeout(function() {
+            isNoButtonProcessing = false;
+        }, 5000);
     });
 
     document.addEventListener('contextmenu', (mouseEvent) => {

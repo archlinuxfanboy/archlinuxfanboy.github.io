@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const NUM_SYMBOLS = 100;
     const SYMBOL_SIZE = 20;
-    const FALL_SPEED = 5;
+    const FALL_SPEED = 2; 
 
     let symbolsActive = false;
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         symbol.innerHTML = '+';
         symbol.classList.add('mouse-symbol');
         document.body.appendChild(symbol);
-        
+
         const initialX = Math.random() * window.innerWidth;
         const initialY = Math.random() * window.innerHeight;
         symbol.style.left = initialX + 'px';
@@ -29,15 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 symbol.style.left = Math.random() * window.innerWidth + 'px';
             }
         }
+
+        requestAnimationFrame(fallSymbols);
     }
 
-    let fallInterval;
     function startFalling() {
         if (!symbolsActive) {
             for (let i = 0; i < NUM_SYMBOLS; i++) {
                 createSymbol();
             }
-            fallInterval = setInterval(fallSymbols, 30);
+            requestAnimationFrame(fallSymbols);
             symbolsActive = true;
         }
     }

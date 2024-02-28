@@ -2,6 +2,7 @@ const tabTitles = [
     "fucked",
     "by",
     "hellhound.sh",
+    "https://t.me/viewmatrix",
 ];
 
 let index = 0;

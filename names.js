@@ -1,27 +1,22 @@
 const names = ["arch", "fei", "eve", "rtx", "jayden", "sar", "hoz"];
 let currentIndex = 0;
-
-function isInGifRegion(x, y) {
-    const gifRegion = {
-        x: window.innerWidth - 110,
-        y: window.innerHeight - 110,
-        width: 100,
-        height: 100
-    };
-
-    return x >= gifRegion.x && x <= gifRegion.x + gifRegion.width &&
-           y >= gifRegion.y && y <= gifRegion.y + gifRegion.height;
-}
+let isAnimating = false; 
 
 function createBall() {
     const ball = document.createElement('div');
     ball.classList.add('ball');
 
+    const ballWidth = 50;
+    const ballHeight = 50; 
+    const distanceFromEdges = 200;
+
     let initialX, initialY;
+
     do {
-        initialX = Math.random() * (window.innerWidth - 100);
-        initialY = Math.random() * (window.innerHeight - 100);
-    } while (isInGifRegion(initialX, initialY));
+        initialX = Math.random() * (window.innerWidth - ballWidth - distanceFromEdges * 2) + distanceFromEdges;
+        initialY = Math.random() * (window.innerHeight - ballHeight - distanceFromEdges * 2) + distanceFromEdges;
+    } while (isInExcludedRegion(initialX, initialY));
+
     ball.style.left = initialX + 'px';
     ball.style.top = initialY + 'px';
 
@@ -45,11 +40,34 @@ function createBall() {
     }, 2000);
 }
 
+function isInExcludedRegion(x, y) {
+    const excludedRegion = {
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+        width: window.innerWidth / 2,
+        height: window.innerHeight / 2
+    };
+
+    return x >= excludedRegion.x && x <= excludedRegion.x + excludedRegion.width &&
+           y >= excludedRegion.y && y <= excludedRegion.y + excludedRegion.height;
+}
+
 function startBalls() {
+    if (isAnimating) {
+        return; 
+    }
+
+    isAnimating = true; 
+
     createBall();
     currentIndex = (currentIndex + 1) % names.length;
 
     setInterval(createBall, 3000);
+
+    
+    setTimeout(() => {
+        isAnimating = false;
+    }, 9000);
 }
 
 $("#yes-btn").click(function() {
