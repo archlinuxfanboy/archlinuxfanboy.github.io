@@ -110,7 +110,7 @@ body, html {
     z-index: 999;
     color: white;
     font-family: monospace;
-    font-size: 40px;
+    font-size: 30px;
     opacity: 0;
     transition: opacity 3s ease-in-out;
 }

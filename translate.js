@@ -1,10 +1,10 @@
 const nameMap = {
-    'フェイ': 'Fei',
-    '悲しみ': 'Sorrow',
-    'アーチ': 'Arch',
-    'ホズ': 'Hoz',
-    'サー': 'Sar',
-    'ジェイデン': 'Jayden'
+    'フェイ': 'fei',
+    '悲しみ': 'sorrow',
+    'アーチ': 'arch',
+    'ホズ': 'hoz',
+    'サー': 'sar',
+    'ジェイデン': 'jayden'
 };
 
 function handleMouseOver(event) {
