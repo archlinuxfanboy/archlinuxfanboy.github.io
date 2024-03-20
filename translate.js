@@ -7,6 +7,8 @@ const nameMap = {
     'ジェイデン': 'jayden'
 };
 
+// list of names (will add rtx when he apologizes to king ecipx)
+
 function handleMouseOver(event) {
     const listItem = event.target;
     const japaneseName = listItem.textContent.trim();

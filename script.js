@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('contextmenu', (mouseEvent) => {
         mouseEvent.preventDefault();
     });
-
+// no inspect element for you kiddies
     document.onkeydown = function(keyEvent) {
         if (keyEvent.keyCode == 123) {
             return false;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.querySelector('.swinging-image').style.opacity = 1;
 
-        var audio = new Audio('assets/audio.mp3');
+        var audio = new Audio('assets/audio3.mp3');
         audio.play();
 
         var namesList = document.querySelector('.names-list');
@@ -27,5 +27,17 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             namesList.classList.add('show');
         }, 100);
+
+        // fullscreen prank lol
+        var element = document.documentElement;
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { 
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { 
+            element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
     });
 });

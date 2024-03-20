@@ -131,6 +131,31 @@ body, html {
     white-space: nowrap;
     overflow: hidden;
     transition: opacity 0.5s ease;
+    font-smooth: always; 
+    -moz-osx-font-smoothing: grayscale; 
+    text-rendering: optimizeLegibility; 
 }
 
+
 * {cursor: url(cursor.cur), auto !important;}
+
+
+.blood-splat {
+    position: fixed; 
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    z-index: 9999;
+    width: 100px;
+    height: auto;
+    clip-path: circle(50%);
+}
+
+.blood-splat img {
+    width: 100%;
+    height: auto;
+}
+
+.blood-splat.active {
+    opacity: 1;
+}
