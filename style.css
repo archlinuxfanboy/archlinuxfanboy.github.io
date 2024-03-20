@@ -58,7 +58,7 @@ body, html {
     outline: none;
     user-select: none;
     text-decoration: none;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.5s; 
 }
 
 .fade-button:hover {
@@ -68,7 +68,7 @@ body, html {
 }
 
 .fade-button:active {
-    opacity: 0;
+    opacity: 0; 
 }
 
 @keyframes swing {
