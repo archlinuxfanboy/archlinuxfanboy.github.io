@@ -17,33 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
         this.disabled = true;
         this.style.cursor = 'default';
 
-        const neonText = document.createElement('div');
-        neonText.textContent = 'hellhound.sh';
-        neonText.classList.add('neon-text', 'fade-in');
-        
-        const neonTextCSS = `
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-family: 'Poppins';
-            font-size: 80px;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            transition: opacity 3s ease; 
-        `;
-
-        neonText.style.cssText = neonTextCSS;
-
-        document.body.appendChild(neonText);
-
-        setTimeout(function() {
-            neonText.style.opacity = 1; 
-        }, 100);
-
-        var audio = new Audio('assets/audio.mp3');
+        var audio = new Audio('assets/kys.mp3');
+        audio.loop = true;
         audio.play();
 
         var namesList = document.querySelector('.names-list');
