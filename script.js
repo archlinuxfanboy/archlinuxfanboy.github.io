@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.disabled = true;
         this.style.cursor = 'default';
 
-        var audio = new Audio('assets/kys.mp3');
+        var audio = new Audio('assets/audio.mp3');
         audio.loop = true;
         audio.play();
 
