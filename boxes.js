@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'sorrow':
                 return 'does not own any socials (w opsec)';
             case 'rtx':
-                return '<a href="https://t.me/sliturself" target="_blank"><span style="color: red;">t.me/sliturself</span></a>';
+                return '<a href="https://t.me/sliturself" target="_blank">t.me/sliturself</a>';
             case 'jayden':
                 return '<a href="https://t.me/starjumps" target="_blank">t.me/starjumps</a>';
             case 'hoz':
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return '';
         }
     }
-    
     
 
     function createWindowsXPPopup(text, imageName) {
