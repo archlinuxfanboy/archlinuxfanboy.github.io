@@ -111,7 +111,7 @@ body, html {
     z-index: 999;
     color: white;
     font-family: 'Poppins';
-    font-size: 30px;
+    font-size: 24px;
     opacity: 0;
     transition: opacity 3s ease-in-out;
 }
@@ -124,24 +124,36 @@ body, html {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: max-content; 
 }
 
 .names-list ul li {
+    display: block;
     margin-bottom: 10px;
-    width: 150px;
     white-space: nowrap;
     overflow: hidden;
-    transition: opacity 0.5s ease, transform 0.3s ease;
+    transition: opacity 0.5s ease, transform 0.3s ease; 
+    font-size: 24px; 
     font-smooth: always; 
     -moz-osx-font-smoothing: grayscale; 
     text-rendering: optimizeLegibility; 
     cursor: pointer;
+    padding: 0px 0px; 
+}
+
+.names-list ul li span {
+    display: inline-block;
+    filter: blur(2px); 
+}
+
+.names-list ul li:hover span {
+    filter: none; 
 }
 
 .names-list ul li:hover {
-    text-decoration: underline;
-    transform: translateX(10px);
+    text-decoration: none;
 }
+
 
 * {cursor: url(cursor.cur), auto !important;}
 
@@ -165,94 +177,30 @@ body, html {
     opacity: 1;
 }
 
-.button-icon {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
+
+
+@font-face {
+    font-family: 'Munich';
+    src: url('assets/munich.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
 }
 
-.windows-xp-popup {
+.english-name-popup {
     position: fixed;
-    background-color: rgba(169, 169, 169, 0.1);
-    border: 2px solid white;
-    padding: 0;
-    z-index: 1000;
-    user-select: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+    bottom: -100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px; 
+    font-family: "Munich", Arial, sans-serif; 
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 30px; 
+    border-radius: 20px;
+    transition: bottom 0.5s ease; 
 }
 
-.kitty-image {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50px;
-    height: 41px;
-}
-
-.windows-xp-window {
-    position: relative;
-    width: 400px;
-    height: 240px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.windows-xp-close-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    font-family: 'Poppins';
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    user-select: none;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.windows-xp-close-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.windows-xp-text {
-    color: white;
-    font-size: 24px;
-    font-family: 'Poppins';
-    user-select: none;
-    cursor: grab;
-    margin-top: 20px;
-}
-
-.windows-xp-text a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    color: #ffffff;
-    text-decoration: none;
-    margin-top: 10px;
-    font-family: 'Poppins';
-}
-
-.windows-xp-text a:hover {
-    text-decoration: underline;
-}
-
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 10px;
-    pointer-events: none;
+.english-name-popup:hover,
+.show-popup {
+    bottom: 20px; 
 }
