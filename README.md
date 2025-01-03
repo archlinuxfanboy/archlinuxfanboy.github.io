@@ -1,3 +1,0 @@
->.<
-
-thx xeno for help
