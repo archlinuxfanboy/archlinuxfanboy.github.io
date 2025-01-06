@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-
+@font-face {
+    font-family: 'Munich';
+    src: url('assets/munich.ttf') format('truetype');
+}
 
 html, body {
     overflow: hidden;
@@ -20,12 +21,12 @@ body {
     background: url('background.gif') no-repeat center center fixed;
     background-size: cover;
     position: relative;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Munich', sans-serif;
 }
 
 * {
     user-select: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Munich', sans-serif;
 }
 
 img {
@@ -63,7 +64,7 @@ img {
 }
 
 #enter-button {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Munich', sans-serif;
     font-size: 18px;
     font-weight: bold;
     padding: 15px 30px;
@@ -180,7 +181,7 @@ img {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Munich', sans-serif;
     display: block;
     padding: 10px 0;
     transition: background-color 0.3s ease;
@@ -206,7 +207,6 @@ img {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-    border-right: 1px solid white;
     transition: all 0.5s ease-in-out;
 }
 
@@ -274,11 +274,23 @@ img {
 .tilt-box {
     background: transparent;
     border: 10px solid rgba(255, 255, 255, 0.8);
-    padding: 60px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3), 0 0 90px rgba(255, 255, 255, 0.2);
     transition: transform 0.1s ease, box-shadow 0.1s ease;
     perspective: 1000px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    animation: lightsaber-glow 1.5s infinite alternate;
+}
+
+@keyframes lightsaber-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.7), 0 0 70px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(192, 192, 192, 1), 0 0 30px rgba(192, 192, 192, 1), 0 0 40px rgba(192, 192, 192, 1), 0 0 50px rgba(192, 192, 192, 1), 0 0 60px rgba(192, 192, 192, 1), 0 0 70px rgba(192, 192, 192, 1), 0 0 80px rgba(192, 192, 192, 1);
+    }
 }
 
 .snowflake {
