@@ -153,15 +153,18 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: left 0.5s ease-in-out;
+    transition: left 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    visibility: hidden; 
 }
 
 .navbar.visible {
     left: 0;
+    visibility: visible; 
 }
 
 .navbar.hidden {
     left: -200px;
+    visibility: hidden;
     pointer-events: none;
 }
 
@@ -240,7 +243,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: pointer;
+    cursor: default; 
     z-index: 4;
     display: none; 
     background: none; 
@@ -268,7 +271,7 @@ img {
 }
 
 .menu-button.visible {
-    display: flex;
+    display: flex; 
 }
 
 .tilt-box {
