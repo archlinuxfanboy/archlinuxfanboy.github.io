@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 @font-face {
-    font-family: 'Munich';
-    src: url('assets/munich.ttf') format('truetype');
+    font-family: 'Minecraft';
+    src: url('assets/Minecraft.otf') format('opentype');
 }
 
 html, body {
@@ -9,6 +11,7 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    cursor: url('assets/cursor.cur'), auto;
 }
 
 body {
@@ -21,12 +24,13 @@ body {
     background: url('background.gif') no-repeat center center fixed;
     background-size: cover;
     position: relative;
-    font-family: 'Munich', sans-serif;
+    font-family: 'Minecraft', sans-serif;
+    color: #d3d3d3;
 }
 
 * {
     user-select: none;
-    font-family: 'Munich', sans-serif;
+    font-family: 'Minecraft', sans-serif;
 }
 
 img {
@@ -39,7 +43,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: black;
+    background: rgb(176, 176, 176);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,26 +68,28 @@ img {
 }
 
 #enter-button {
-    font-family: 'Munich', sans-serif;
+    font-family: 'Minecraft', sans-serif;
     font-size: 18px;
     font-weight: bold;
     padding: 15px 30px;
-    border: 2px solid white;
+    border: 2px solid #d3d3d3;
     background-color: transparent;
-    color: white;
+    color: #d3d3d3;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     z-index: 3;
     animation: slide-in 1s ease-out;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 #enter-button:hover {
-    background-color: white;
+    background-color: #d3d3d3;
     color: black;
     transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 15px rgba(255, 255, 255, 0.7);
 }
 
 #enter-button:before {
@@ -93,7 +99,7 @@ img {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(211, 211, 211, 0.2);
     z-index: -1;
     transition: all 0.5s ease;
 }
@@ -107,16 +113,15 @@ img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.overlay {
+.overlay-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('overlay.png') no-repeat center center;
-    background-size: cover;
-    opacity: 0.8; 
+    pointer-events: none;
     z-index: 1;
+    opacity: 0;
 }
 
 .content {
@@ -147,19 +152,19 @@ img {
     left: -200px;
     width: 200px;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(171, 171, 171, 0.2);
     z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: left 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    visibility: hidden; 
+    visibility: hidden;
 }
 
 .navbar.visible {
     left: 0;
-    visibility: visible; 
+    visibility: visible;
 }
 
 .navbar.hidden {
@@ -181,36 +186,185 @@ img {
 }
 
 .navbar ul li a {
-    color: white;
+    font-family: 'Minecraft', sans-serif;
+    color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Munich', sans-serif;
     display: block;
     padding: 10px 0;
     transition: background-color 0.3s ease;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 
 .navbar ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(71, 71, 71, 0.2);
 }
 
 .members-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    transition: all 1s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
 }
 
 .member {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.1);
     color: white;
-    transition: all 0.5s ease-in-out;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.member:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.member img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.member:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.member-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.member:hover .member-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.popup-content {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: auto;
+    box-shadow: 0 0 30px rgba(211, 211, 211, 0.5), 0 0 60px rgba(211, 211, 211, 0.3), 0 0 90px rgba(211, 211, 211, 0.2);
+    will-change: transform;
+}
+
+.popup-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.popup-content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.popup-content h2 {
+    margin: 10px 0;
+}
+
+.popup-content p {
+    margin: 10px 0;
+}
+
+.popup-content a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.popup-content a:hover {
+    background: #444;
+}
+
+.popup-content.fade-in {
+    opacity: 1;
+}
+
+.popup-content.fade-out {
+    opacity: 0;
+}
+
+.popup-content.slide-in-from-top {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.popup-content.slide-in-from-bottom {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.popup-content.slide-in-from-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.popup-content.slide-in-from-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.popup-content.slide-in-from-top.fade-in,
+.popup-content.slide-in-from-bottom.fade-in,
+.popup-content.slide-in-from-left.fade-in,
+.popup-content.slide-in-from-right.fade-in {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
+.popup-content.slide-out {
+    transform: translateY(100%);
+    opacity: 0;
 }
 
 .profile-pic {
@@ -225,7 +379,7 @@ img {
     height: 200px;
     margin-top: 10px;
     vertical-align: middle;
-    position: relative; 
+    position: relative;
     z-index: 1;
 }
 
@@ -239,27 +393,31 @@ img {
     top: 20px;
     left: 20px;
     width: 30px;
-    height: 30px;
+    height: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: default; 
+    cursor: pointer;
     z-index: 4;
-    display: none; 
-    background: none; 
+    background: none;
     border: none;
-    padding: 0; 
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .menu-button .line {
     width: 100%;
-    height: 4px;
-    background-color: white;
-    transition: all 0.3s ease;
+    height: 3px;
+    background-color: #ffffff;
+    transition: all 0.6s ease;
+    border-radius: 1px;
+    border: 1px solid rgb(226, 226, 226);
 }
 
 .menu-button.open .line:nth-child(1) {
-    transform: rotate(-45deg) translate(-3px, 3px);
+    transform: rotate(-45deg) translate(0px, 0px);
 }
 
 .menu-button.open .line:nth-child(2) {
@@ -267,19 +425,24 @@ img {
 }
 
 .menu-button.open .line:nth-child(3) {
-    transform: rotate(45deg) translate(-3px, -3px);
+    transform: rotate(45deg) translate(0px, 0px);
 }
 
 .menu-button.visible {
-    display: flex; 
+    display: flex;
+}
+
+.menu-button.fade-in {
+    opacity: 1;
 }
 
 .tilt-box {
     background: transparent;
-    border: 10px solid rgba(255, 255, 255, 0.8);
-    padding: 50px;
+    border: 10px solid rgba(211, 211, 211, 0.8);
+    padding: 100px 100px;
+    margin-top: 0px;
     border-radius: 10px;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(255, 255, 255, 0.3), 0 0 90px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(211, 211, 211, 0.5), 0 0 60px rgba(211, 211, 211, 0.3), 0 0 90px rgba(211, 211, 211, 0.2);
     transition: transform 0.1s ease, box-shadow 0.1s ease;
     perspective: 1000px;
     transform-style: preserve-3d;
@@ -287,30 +450,58 @@ img {
     animation: lightsaber-glow 1.5s infinite alternate;
 }
 
+.tilt-box h1 {
+    text-shadow: 1px 1px 2px grey;
+}
+
 @keyframes lightsaber-glow {
     0% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.7), 0 0 70px rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 10px rgba(211, 211, 211, 0.7), 0 0 20px rgba(211, 211, 211, 0.7), 0 0 30px rgba(211, 211, 211, 0.7), 0 0 40px rgba(211, 211, 211, 0.7), 0 0 50px rgba(211, 211, 211, 0.7), 0 0 60px rgba(211, 211, 211, 0.7), 0 0 70px rgba(211, 211, 211, 0.7);
     }
     100% {
-        box-shadow: 0 0 20px rgba(192, 192, 192, 1), 0 0 30px rgba(192, 192, 192, 1), 0 0 40px rgba(192, 192, 192, 1), 0 0 50px rgba(192, 192, 192, 1), 0 0 60px rgba(192, 192, 192, 1), 0 0 70px rgba(192, 192, 192, 1), 0 0 80px rgba(192, 192, 192, 1);
+        box-shadow: 0 0 20px rgba(211, 211, 211, 1), 0 0 30px rgba(211, 211, 211, 1), 0 0 40px rgba(211, 211, 211, 1), 0 0 50px rgba(211, 211, 211, 1), 0 0 60px rgba(211, 211, 211, 1), 0 0 70px rgba(211, 211, 211, 1), 0 0 80px rgba(211, 211, 211, 1);
     }
+}
+
+.snowflake-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 .snowflake {
     position: absolute;
-    top: -50px;
-    width: 20px;
-    height: 20px;
-    background: url('assets/snowflake.png') no-repeat center center;
-    background-size: contain;
-    opacity: 0.8;
-    animation: fall linear infinite;
+    top: -20%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: snow;
+    animation: snowfall 12s linear infinite;
+    z-index: 0;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-        opacity: 0;
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0);
     }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+    }
+}
+
+@keyframes sway {
+    0%,
+    100% {
+        transform: translateX(calc(-1 * var(--sway-amplitude)));
+    }
+    50% {
+        transform: translateX(var(--sway-amplitude));
+    }
+}
+
+button, a, .member, .menu-button {
+    cursor: url('assets/cursor.cur'), auto;
 }
 
