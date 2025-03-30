@@ -168,7 +168,7 @@ body, html {
 }
 
 .japanese-name {
-    font-family: 'Munich', sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
     transition: text-shadow 0.3s ease-in-out;
     display: inline-block;
@@ -216,7 +216,7 @@ body, html {
 }
 
 .english-name-popup {
-    font-family: 'Munich', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 36px; 
     color: rgb(255, 255, 255);
     background-color: transparent;
